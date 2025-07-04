@@ -6,6 +6,48 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9687708E2E172C39003BCF2C /* stops.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9687708B2E172C39003BCF2C /* stops.txt */; };
+		9687708F2E172C39003BCF2C /* route_timepoints.txt in Resources */ = {isa = PBXBuildFile; fileRef = 968770872E172C39003BCF2C /* route_timepoints.txt */; };
+		968770902E172C39003BCF2C /* feed_info.txt in Resources */ = {isa = PBXBuildFile; fileRef = 968770862E172C39003BCF2C /* feed_info.txt */; };
+		968770912E172C39003BCF2C /* routes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 968770882E172C39003BCF2C /* routes.txt */; };
+		968770922E172C39003BCF2C /* trips.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9687708C2E172C39003BCF2C /* trips.txt */; };
+		968770932E172C39003BCF2C /* shapes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 968770892E172C39003BCF2C /* shapes.txt */; };
+		968770942E172C39003BCF2C /* stop_times.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9687708A2E172C39003BCF2C /* stop_times.txt */; };
+		968770952E172C39003BCF2C /* calendar_dates.txt in Resources */ = {isa = PBXBuildFile; fileRef = 968770852E172C39003BCF2C /* calendar_dates.txt */; };
+		968770962E172C39003BCF2C /* agency.txt in Resources */ = {isa = PBXBuildFile; fileRef = 968770842E172C39003BCF2C /* agency.txt */; };
+		96A64E642E09A04500F1771A /* Agency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E462E09A04500F1771A /* Agency.swift */; };
+		96A64E652E09A04500F1771A /* CalenderDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E472E09A04500F1771A /* CalenderDate.swift */; };
+		96A64E662E09A04500F1771A /* FeedInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E482E09A04500F1771A /* FeedInfo.swift */; };
+		96A64E672E09A04500F1771A /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E492E09A04500F1771A /* Route.swift */; };
+		96A64E682E09A04500F1771A /* RouteTimepoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E4A2E09A04500F1771A /* RouteTimepoint.swift */; };
+		96A64E692E09A04500F1771A /* ShapePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E4B2E09A04500F1771A /* ShapePoint.swift */; };
+		96A64E6A2E09A04500F1771A /* Stop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E4C2E09A04500F1771A /* Stop.swift */; };
+		96A64E6B2E09A04500F1771A /* StopTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E4D2E09A04500F1771A /* StopTime.swift */; };
+		96A64E6C2E09A04500F1771A /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E4E2E09A04500F1771A /* Trip.swift */; };
+		96A64E6D2E09A04500F1771A /* CSVDecoder+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E512E09A04500F1771A /* CSVDecoder+Extensions.swift */; };
+		96A64E6E2E09A04500F1771A /* GTFSStaticDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E522E09A04500F1771A /* GTFSStaticDataLoader.swift */; };
+		96A64E6F2E09A04500F1771A /* RealtimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E532E09A04500F1771A /* RealtimeService.swift */; };
+		96A64E702E09A04500F1771A /* AlertsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E552E09A04500F1771A /* AlertsViewModel.swift */; };
+		96A64E712E09A04500F1771A /* DirectionStopPickerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E562E09A04500F1771A /* DirectionStopPickerVM.swift */; };
+		96A64E722E09A04500F1771A /* NextBusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E572E09A04500F1771A /* NextBusViewModel.swift */; };
+		96A64E732E09A04500F1771A /* RouteListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E582E09A04500F1771A /* RouteListViewModel.swift */; };
+		96A64E742E09A04500F1771A /* AlertsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E5A2E09A04500F1771A /* AlertsView.swift */; };
+		96A64E752E09A04500F1771A /* DirectionStopPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E5B2E09A04500F1771A /* DirectionStopPickerView.swift */; };
+		96A64E762E09A04500F1771A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E5C2E09A04500F1771A /* MapView.swift */; };
+		96A64E772E09A04500F1771A /* NextBusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E5D2E09A04500F1771A /* NextBusView.swift */; };
+		96A64E782E09A04500F1771A /* RouteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E5E2E09A04500F1771A /* RouteListView.swift */; };
+		96A64E792E09A04500F1771A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E612E09A04500F1771A /* ContentView.swift */; };
+		96A64E7A2E09A04500F1771A /* RIPTA_TApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A64E622E09A04500F1771A /* RIPTA_TApp.swift */; };
+		96A64E7B2E09A04500F1771A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96A64E602E09A04500F1771A /* Assets.xcassets */; };
+		96D4E5E92E16BC2100BDCB7C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4E5E82E16BC1D00BDCB7C /* HomeView.swift */; };
+		96D4E5EB2E16BFE900BDCB7C /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4E5EA2E16BFE000BDCB7C /* FavoriteItem.swift */; };
+		96D4E5ED2E16C02D00BDCB7C /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4E5EC2E16C01A00BDCB7C /* FavoritesManager.swift */; };
+		96D4E5EF2E16C08000BDCB7C /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D4E5EE2E16C07A00BDCB7C /* FavoritesView.swift */; };
+		96D7408E2E0A375300C89949 /* RealtimeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D7408D2E0A374600C89949 /* RealtimeModels.swift */; };
+		96D740942E0A3C1A00C89949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96D740932E0A3C1A00C89949 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		96BC8F9D2E08E032005BAEDE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,17 +66,53 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		965E2B7F2E14C12900299B7D /* RIPTA-T-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "RIPTA-T-Info.plist"; sourceTree = SOURCE_ROOT; };
+		968770842E172C39003BCF2C /* agency.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = agency.txt; sourceTree = "<group>"; };
+		968770852E172C39003BCF2C /* calendar_dates.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = calendar_dates.txt; sourceTree = "<group>"; };
+		968770862E172C39003BCF2C /* feed_info.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = feed_info.txt; sourceTree = "<group>"; };
+		968770872E172C39003BCF2C /* route_timepoints.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = route_timepoints.txt; sourceTree = "<group>"; };
+		968770882E172C39003BCF2C /* routes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = routes.txt; sourceTree = "<group>"; };
+		968770892E172C39003BCF2C /* shapes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = shapes.txt; sourceTree = "<group>"; };
+		9687708A2E172C39003BCF2C /* stop_times.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = stop_times.txt; sourceTree = "<group>"; };
+		9687708B2E172C39003BCF2C /* stops.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = stops.txt; sourceTree = "<group>"; };
+		9687708C2E172C39003BCF2C /* trips.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = trips.txt; sourceTree = "<group>"; };
+		96A64E462E09A04500F1771A /* Agency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Agency.swift; sourceTree = "<group>"; };
+		96A64E472E09A04500F1771A /* CalenderDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderDate.swift; sourceTree = "<group>"; };
+		96A64E482E09A04500F1771A /* FeedInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInfo.swift; sourceTree = "<group>"; };
+		96A64E492E09A04500F1771A /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		96A64E4A2E09A04500F1771A /* RouteTimepoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTimepoint.swift; sourceTree = "<group>"; };
+		96A64E4B2E09A04500F1771A /* ShapePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapePoint.swift; sourceTree = "<group>"; };
+		96A64E4C2E09A04500F1771A /* Stop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stop.swift; sourceTree = "<group>"; };
+		96A64E4D2E09A04500F1771A /* StopTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopTime.swift; sourceTree = "<group>"; };
+		96A64E4E2E09A04500F1771A /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		96A64E512E09A04500F1771A /* CSVDecoder+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CSVDecoder+Extensions.swift"; sourceTree = "<group>"; };
+		96A64E522E09A04500F1771A /* GTFSStaticDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFSStaticDataLoader.swift; sourceTree = "<group>"; };
+		96A64E532E09A04500F1771A /* RealtimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeService.swift; sourceTree = "<group>"; };
+		96A64E552E09A04500F1771A /* AlertsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsViewModel.swift; sourceTree = "<group>"; };
+		96A64E562E09A04500F1771A /* DirectionStopPickerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionStopPickerVM.swift; sourceTree = "<group>"; };
+		96A64E572E09A04500F1771A /* NextBusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextBusViewModel.swift; sourceTree = "<group>"; };
+		96A64E582E09A04500F1771A /* RouteListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListViewModel.swift; sourceTree = "<group>"; };
+		96A64E5A2E09A04500F1771A /* AlertsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsView.swift; sourceTree = "<group>"; };
+		96A64E5B2E09A04500F1771A /* DirectionStopPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionStopPickerView.swift; sourceTree = "<group>"; };
+		96A64E5C2E09A04500F1771A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		96A64E5D2E09A04500F1771A /* NextBusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextBusView.swift; sourceTree = "<group>"; };
+		96A64E5E2E09A04500F1771A /* RouteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteListView.swift; sourceTree = "<group>"; };
+		96A64E602E09A04500F1771A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		96A64E612E09A04500F1771A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		96A64E622E09A04500F1771A /* RIPTA_TApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RIPTA_TApp.swift; sourceTree = "<group>"; };
 		96BC8F8F2E08E031005BAEDE /* RIPTA T.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RIPTA T.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BC8F9C2E08E032005BAEDE /* RIPTA TTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RIPTA TTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BC8FA62E08E032005BAEDE /* RIPTA TUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RIPTA TUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96D4E5E82E16BC1D00BDCB7C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		96D4E5EA2E16BFE000BDCB7C /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
+		96D4E5EC2E16C01A00BDCB7C /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
+		96D4E5EE2E16C07A00BDCB7C /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		96D7408D2E0A374600C89949 /* RealtimeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeModels.swift; sourceTree = "<group>"; };
+		96D740932E0A3C1A00C89949 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		96D740952E0A3CB800C89949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		96BC8F912E08E031005BAEDE /* RIPTA T */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "RIPTA T";
-			sourceTree = "<group>";
-		};
 		96BC8F9F2E08E032005BAEDE /* RIPTA TTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "RIPTA TTests";
@@ -72,10 +150,106 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9687708D2E172C39003BCF2C /* GTFS */ = {
+			isa = PBXGroup;
+			children = (
+				968770842E172C39003BCF2C /* agency.txt */,
+				968770852E172C39003BCF2C /* calendar_dates.txt */,
+				968770862E172C39003BCF2C /* feed_info.txt */,
+				968770872E172C39003BCF2C /* route_timepoints.txt */,
+				968770882E172C39003BCF2C /* routes.txt */,
+				968770892E172C39003BCF2C /* shapes.txt */,
+				9687708A2E172C39003BCF2C /* stop_times.txt */,
+				9687708B2E172C39003BCF2C /* stops.txt */,
+				9687708C2E172C39003BCF2C /* trips.txt */,
+			);
+			path = GTFS;
+			sourceTree = "<group>";
+		};
+		96A64E4F2E09A04500F1771A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				96D4E5EA2E16BFE000BDCB7C /* FavoriteItem.swift */,
+				96A64E462E09A04500F1771A /* Agency.swift */,
+				96A64E472E09A04500F1771A /* CalenderDate.swift */,
+				96A64E482E09A04500F1771A /* FeedInfo.swift */,
+				96A64E492E09A04500F1771A /* Route.swift */,
+				96A64E4A2E09A04500F1771A /* RouteTimepoint.swift */,
+				96A64E4B2E09A04500F1771A /* ShapePoint.swift */,
+				96A64E4C2E09A04500F1771A /* Stop.swift */,
+				96A64E4D2E09A04500F1771A /* StopTime.swift */,
+				96A64E4E2E09A04500F1771A /* Trip.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		96A64E502E09A04500F1771A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9687708D2E172C39003BCF2C /* GTFS */,
+				96D740932E0A3C1A00C89949 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		96A64E542E09A04500F1771A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				96D7408D2E0A374600C89949 /* RealtimeModels.swift */,
+				96A64E512E09A04500F1771A /* CSVDecoder+Extensions.swift */,
+				96A64E522E09A04500F1771A /* GTFSStaticDataLoader.swift */,
+				96A64E532E09A04500F1771A /* RealtimeService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		96A64E592E09A04500F1771A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				96A64E552E09A04500F1771A /* AlertsViewModel.swift */,
+				96A64E562E09A04500F1771A /* DirectionStopPickerVM.swift */,
+				96D4E5EC2E16C01A00BDCB7C /* FavoritesManager.swift */,
+				96A64E572E09A04500F1771A /* NextBusViewModel.swift */,
+				96A64E582E09A04500F1771A /* RouteListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		96A64E5F2E09A04500F1771A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96A64E5A2E09A04500F1771A /* AlertsView.swift */,
+				96A64E5B2E09A04500F1771A /* DirectionStopPickerView.swift */,
+				96D4E5EE2E16C07A00BDCB7C /* FavoritesView.swift */,
+				96D4E5E82E16BC1D00BDCB7C /* HomeView.swift */,
+				96A64E5C2E09A04500F1771A /* MapView.swift */,
+				96A64E5D2E09A04500F1771A /* NextBusView.swift */,
+				96A64E5E2E09A04500F1771A /* RouteListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		96A64E632E09A04500F1771A /* RIPTA T */ = {
+			isa = PBXGroup;
+			children = (
+				965E2B7F2E14C12900299B7D /* RIPTA-T-Info.plist */,
+				96A64E4F2E09A04500F1771A /* Models */,
+				96A64E502E09A04500F1771A /* Resources */,
+				96A64E542E09A04500F1771A /* Services */,
+				96A64E592E09A04500F1771A /* ViewModels */,
+				96A64E5F2E09A04500F1771A /* Views */,
+				96A64E602E09A04500F1771A /* Assets.xcassets */,
+				96A64E612E09A04500F1771A /* ContentView.swift */,
+				96A64E622E09A04500F1771A /* RIPTA_TApp.swift */,
+				96D740952E0A3CB800C89949 /* Info.plist */,
+			);
+			path = "RIPTA T";
+			sourceTree = "<group>";
+		};
 		96BC8F862E08E031005BAEDE = {
 			isa = PBXGroup;
 			children = (
-				96BC8F912E08E031005BAEDE /* RIPTA T */,
+				96A64E632E09A04500F1771A /* RIPTA T */,
 				96BC8F9F2E08E032005BAEDE /* RIPTA TTests */,
 				96BC8FA92E08E032005BAEDE /* RIPTA TUITests */,
 				96BC8F902E08E031005BAEDE /* Products */,
@@ -106,9 +280,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				96BC8F912E08E031005BAEDE /* RIPTA T */,
 			);
 			name = "RIPTA T";
 			packageProductDependencies = (
@@ -212,6 +383,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9687708E2E172C39003BCF2C /* stops.txt in Resources */,
+				9687708F2E172C39003BCF2C /* route_timepoints.txt in Resources */,
+				968770902E172C39003BCF2C /* feed_info.txt in Resources */,
+				968770912E172C39003BCF2C /* routes.txt in Resources */,
+				968770922E172C39003BCF2C /* trips.txt in Resources */,
+				968770932E172C39003BCF2C /* shapes.txt in Resources */,
+				968770942E172C39003BCF2C /* stop_times.txt in Resources */,
+				968770952E172C39003BCF2C /* calendar_dates.txt in Resources */,
+				968770962E172C39003BCF2C /* agency.txt in Resources */,
+				96A64E7B2E09A04500F1771A /* Assets.xcassets in Resources */,
+				96D740942E0A3C1A00C89949 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +418,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96A64E642E09A04500F1771A /* Agency.swift in Sources */,
+				96A64E652E09A04500F1771A /* CalenderDate.swift in Sources */,
+				96A64E662E09A04500F1771A /* FeedInfo.swift in Sources */,
+				96D4E5E92E16BC2100BDCB7C /* HomeView.swift in Sources */,
+				96D4E5EF2E16C08000BDCB7C /* FavoritesView.swift in Sources */,
+				96A64E672E09A04500F1771A /* Route.swift in Sources */,
+				96A64E682E09A04500F1771A /* RouteTimepoint.swift in Sources */,
+				96A64E692E09A04500F1771A /* ShapePoint.swift in Sources */,
+				96D4E5ED2E16C02D00BDCB7C /* FavoritesManager.swift in Sources */,
+				96D7408E2E0A375300C89949 /* RealtimeModels.swift in Sources */,
+				96D4E5EB2E16BFE900BDCB7C /* FavoriteItem.swift in Sources */,
+				96A64E6A2E09A04500F1771A /* Stop.swift in Sources */,
+				96A64E6B2E09A04500F1771A /* StopTime.swift in Sources */,
+				96A64E6C2E09A04500F1771A /* Trip.swift in Sources */,
+				96A64E6D2E09A04500F1771A /* CSVDecoder+Extensions.swift in Sources */,
+				96A64E6E2E09A04500F1771A /* GTFSStaticDataLoader.swift in Sources */,
+				96A64E6F2E09A04500F1771A /* RealtimeService.swift in Sources */,
+				96A64E702E09A04500F1771A /* AlertsViewModel.swift in Sources */,
+				96A64E712E09A04500F1771A /* DirectionStopPickerVM.swift in Sources */,
+				96A64E722E09A04500F1771A /* NextBusViewModel.swift in Sources */,
+				96A64E732E09A04500F1771A /* RouteListViewModel.swift in Sources */,
+				96A64E742E09A04500F1771A /* AlertsView.swift in Sources */,
+				96A64E752E09A04500F1771A /* DirectionStopPickerView.swift in Sources */,
+				96A64E762E09A04500F1771A /* MapView.swift in Sources */,
+				96A64E772E09A04500F1771A /* NextBusView.swift in Sources */,
+				96A64E782E09A04500F1771A /* RouteListView.swift in Sources */,
+				96A64E792E09A04500F1771A /* ContentView.swift in Sources */,
+				96A64E7A2E09A04500F1771A /* RIPTA_TApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,13 +603,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RIPTA-T-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -409,6 +625,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ichi.RIPTA-T";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -420,13 +637,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "RIPTA-T-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -436,6 +659,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ichi.RIPTA-T";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

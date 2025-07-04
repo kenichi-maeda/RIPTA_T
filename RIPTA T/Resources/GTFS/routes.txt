@@ -1,0 +1,64 @@
+route_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+1,1,"Eddy St/Hope St/Benefit St",,3,http://ripta.com/1,E0004D,FFFFFF
+10,10x,"North Scituate Express",,3,http://www.ripta.com/10,93328E,FFFFFF
+11,R,"Broad/North Main",,3,http://ripta.com/11,00843D,FFFFFF
+12,12x,"Arctic/RI-117 Express",,3,http://www.ripta.com/12,93328E,FFFFFF
+13,13,"Coventry/Arctic/CCRI Warwick",,3,http://www.ripta.com/13,0085CA,FFFFFF
+14,14,"West Bay - Narragansett/Newport",,3,http://www.ripta.com/14,0085CA,FFFFFF
+16,16,"Bald Hill Rd/NEIT",,3,,0085CA,FFFFFF
+17,17,"Dyer Ave/Pocasset Ave",,3,http://www.ripta.com/17,0085CA,FFFFFF
+18,18,"Union Ave",,3,http://www.ripta.com/18,0085CA,FFFFFF
+19,19,"Plainfield St/Westminster St",,3,http://www.ripta.com/19,0085CA,FFFFFF
+20,20,"Elmwood Ave/Airport",,3,http://ripta.com/20,E0004D,FFFFFF
+21,21,"Reservoir Ave/Garden City/CCRI Warwick",,3,http://www.ripta.com/21,0085CA,FFFFFF
+22,22,"Pontiac Ave",,3,http://www.ripta.com/22,0085CA,FFFFFF
+23,23,"Arctic/Crompton/Center of New England",,3,,0085CA,FFFFFF
+24,24L,"Providence/Fall-River/Newport Express",,3,http://www.ripta.com/24,93328E,FFFFFF
+27,27,"Broadway/Manton Ave",,3,http://www.ripta.com/27,E0004D,FFFFFF
+28,28,"Broadway/Hartford Ave",,3,http://www.ripta.com/28,E0004D,FFFFFF
+29,29,"CCRI Warwick/Conimicut",,3,http://www.ripta.com/29,0085CA,FFFFFF
+3,3,"Warwick Ave/Oakland Beach",,3,http://ripta.com/3,0085CA,FFFFFF
+30,30,"Oaklawn Ave",,3,http://www.ripta.com/30,0085CA,FFFFFF
+31,31,"Cranston St",,3,http://www.ripta.com/31,E0004D,FFFFFF
+32,32,"Wampanoag Mall/Seekonk Square",,3,http://www.ripta.com/32,0085CA,FFFFFF
+33,33,"Riverside",,3,http://www.ripta.com/33,0085CA,FFFFFF
+34,34,"Warren Ave/Seekonk Square",,3,http://www.ripta.com/34,0085CA,FFFFFF
+35,35,"Rumford/Newport Ave",,3,http://www.ripta.com/35,0085CA,FFFFFF
+4,4,"Pawtuxet Village/Warwick Neck",,3,http://ripta.com/4,0085CA,FFFFFF
+40,40,"Butler Hospital/Elmgrove Ave",,3,http://www.ripta.com/40,0085CA,FFFFFF
+45,45,"Woonsocket Beach Express",,3,,C9DB57,000000
+46,46,"Pawtucket/Central Falls Beach Express",,3,,C9DB57,000000
+47,47,"North Providence/Cranston Beach Express",,3,,C9DB57,000000
+50,50,"Douglas Ave",,3,http://www.ripta.com/50,E0004D,FFFFFF
+51,51,"Charles St/Twin River/CCRI Lincoln",,3,http://www.ripta.com/51,0085CA,FFFFFF
+54,54,"Lincoln/Woonsocket",,3,http://www.ripta.com/54,0085CA,FFFFFF
+55,55,"Admiral St (Providence College & RI College)",,3,http://www.ripta.com/55,0085CA,FFFFFF
+56,56,"Chalkstone Ave",,3,http://www.ripta.com/56,E0004D,FFFFFF
+57,57,"Smith St",,3,http://www.ripta.com/57,0085CA,FFFFFF
+58,58,"Mineral Spring Ave/North Providence",,3,http://www.ripta.com/58,0085CA,FFFFFF
+59,59x,"North Smithfield/Lincoln Express",,3,http://www.ripta.com/59,93328E,FFFFFF
+6,6,"Prairie Ave/Roger Williams Park Zoo",,3,http://ripta.com/6,0085CA,FFFFFF
+60,60,"Providence - Newport (East Bay)",,3,http://www.ripta.com/60,0085CA,FFFFFF
+61,61x,"Tiverton/East Bay Express",,3,http://www.ripta.com/61-1,93328E,FFFFFF
+62,62,"Newport Summer Omnibus",,3,,800000,800000
+63,63,"Broadway (Newport-Middletown)",,3,http://www.ripta.com/63,0085CA,FFFFFF
+64,64,"Newport/URI Kingston",,3,http://www.ripta.com/64,0085CA,FFFFFF
+65,65x,"Narragansett/Wakefield Express",,3,http://www.ripta.com/65,93328E,FFFFFF
+66,66,"Providence - URI Kingston/CCRI Warwick",,3,http://www.ripta.com/66,0085CA,FFFFFF
+67,67,"Bellevue Ave/Salve Regina/Mansions",,3,http://www.ripta.com/67,0085CA,FFFFFF
+68,68,"CCRI Newport/Memorial Blvd/First Beach",,3,http://ripta.com/68,0085CA,FFFFFF
+69,69,"URI Kingston/Galilee",,3,,0085CA,FFFFFF
+7,QX,"Quonset Express",,3,http://ripta.com/qx,93328E,FFFFFF
+71,71,"Broad St/Pawtucket Ave (Pawtucket)",,3,http://www.ripta.com/71,0085CA,FFFFFF
+72,72,"Weeden St (Central Falls)",,3,http://ripta.com/72,E0004D,FFFFFF
+73,73,"Mineral Spring Ave (Pawtucket - CCRI-Lincoln)",,3,http://www.ripta.com/73,0085CA,FFFFFF
+75,75,"Dexter St/Lincoln Mall",,3,http://www.ripta.com/75,0085CA,FFFFFF
+76,76,"Central Ave",,3,http://www.ripta.com/76,0085CA,FFFFFF
+78,78,"Beverage Hill Ave (East Providence & Pawtucket)",,3,http://www.ripta.com/78,0085CA,FFFFFF
+80,80,"Armistice Blvd",,3,http://www.ripta.com/80,0085CA,FFFFFF
+87,87,"Fairmount St/Walnut Hill Plaza",,3,http://ripta.com/87,0085CA,FFFFFF
+88,88,"Walmart Connector",,3,,C9DB57,000000
+89,WM,"Thursday Only Walmart Shopper",,3,,C9DB57,000000
+9,9x,"Pascoag Express",,3,http://www.ripta.com/9,93328E,FFFFFF
+92,92,"East Side/Federal Hill/RI College",,3,http://ripta.com/92,E0004D,FFFFFF
+95,95x,"Westerly Express",,3,http://ripta.com/95,93328E,FFFFFF

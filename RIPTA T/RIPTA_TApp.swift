@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct RIPTA_TApp: App {
+    // Single shared FavoritesManager
+    @StateObject private var favoritesManager = FavoritesManager()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+              .environmentObject(favoritesManager)
         }
     }
 }
+

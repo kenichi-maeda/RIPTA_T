@@ -1,0 +1,2 @@
+feed_publisher_name,feed_publisher_url,feed_lang,feed_start_date,feed_end_date,feed_contact_email,feed_contact_url
+"Rhode Island Public Transit Authority",http://www.ripta.com/,en,20250621,20250822,,
