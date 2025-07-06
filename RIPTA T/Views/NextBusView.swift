@@ -70,7 +70,6 @@ struct NextBusView: View {
     }
 
     var body: some View {
-        // Favorite helper
         let me = FavoriteItem(
             routeID:   route.route_id,
             stopID:    stop.stop_id,
@@ -84,7 +83,7 @@ struct NextBusView: View {
                 .font(.largeTitle)
                 .bold()
 
-            // 2) Route + direction banner
+            // 2) Banner
             HStack {
                 Text("Route \(route.route_short_name)").bold()
                 Text("·")
@@ -95,10 +94,35 @@ struct NextBusView: View {
             .background(Color.gray.opacity(0.2))
             .cornerRadius(8)
 
-            // 3) Map: route line + blue pin
-            routeMapView
+            // 3) Map: route polyline + stop pin + all live buses
+            Map(position: $cameraPosition) {
+                // draw the route
+                if let poly = routePolyline {
+                    MapPolyline(poly)
+                        .stroke(Color.gray, lineWidth: 4)
+                }
 
-            // 4) Arrivals / empty state
+                // selected stop
+                Marker("", coordinate:
+                    CLLocationCoordinate2D(
+                        latitude:  stop.stop_lat,
+                        longitude: stop.stop_lon
+                    )
+                )
+                .tint(.blue)
+
+                // all matching real-time buses
+                ForEach(vm.busCoordinates.indices, id: \.self) { idx in
+                    let coord = vm.busCoordinates[idx]
+                    Marker("", coordinate: coord)
+                        .tint(.red)
+                }
+
+            }
+            .frame(height: 200)
+            .cornerRadius(12)
+
+            // 4) Arrivals / Empty-state
             if upcoming.isEmpty {
                 HStack {
                     Image(systemName: "bus")
@@ -157,62 +181,6 @@ struct NextBusView: View {
                     )
                 }
             }
-        }
-    }
-
-    /// Extracted Map view so the compiler can type‐check easily
-    private var routeMapView: some View {
-        Map(position: $cameraPosition) {
-            if let poly = routePolyline {
-                MapPolyline(poly)
-                    .stroke(Color.gray, lineWidth: 4)
-            }
-            // **Use `Marker`, not `MapMarker`**
-            Marker("", coordinate:
-                CLLocationCoordinate2D(
-                  latitude: stop.stop_lat,
-                  longitude: stop.stop_lon
-                )
-            )
-            .tint(.blue)
-        }
-        .frame(height: 200)
-        .cornerRadius(12)
-    }
-}
-
-struct NextBusView_Previews: PreviewProvider {
-    static var previews: some View {
-        let dummyRoute = Route(
-            route_id:          "20",
-            route_short_name:  "20",
-            route_long_name:   "Elmwood Ave/Airport",
-            route_type:        3,
-            route_url:         nil,
-            route_color:       nil,
-            route_text_color:  nil
-        )
-        let dummyStop = Stop(
-            stop_id:               "24725",
-            stop_code:             "24725",
-            stop_name:             "Elmwood after Post",
-            stop_desc:             nil,
-            stop_lat:              41.8345,
-            stop_lon:              -71.4155,
-            zone_id:               nil,
-            stop_url:              nil,
-            location_type:         0,
-            parent_station:        nil,
-            stop_associated_place: nil,
-            wheelchair_boarding:   nil
-        )
-        NavigationStack {
-            NextBusView(
-              route:     dummyRoute,
-              stop:      dummyStop,
-              direction: 0
-            )
-            .environmentObject(FavoritesManager())
         }
     }
 }

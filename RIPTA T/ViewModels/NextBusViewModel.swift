@@ -21,7 +21,7 @@ final class NextBusViewModel: ObservableObject {
     let direction: Int
 
     @Published var arrivals: [Arrival] = []
-    @Published var busCoordinate: CLLocationCoordinate2D?
+    @Published var busCoordinates: [CLLocationCoordinate2D] = []
 
     private var timer: AnyCancellable?
     private var cancellables = Set<AnyCancellable>()
@@ -60,16 +60,6 @@ final class NextBusViewModel: ObservableObject {
         .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] updates, vehicles in
             guard let self = self else { return }
 
-            // --- Debug: dump every vehicle’s route & static direction ---
-            for veh in vehicles {
-                let tripId    = veh.trip.trip_id
-                _   = veh.trip.route_id ?? "nil"
-                _ = GTFSStaticDataLoader.shared.trips
-                                   .first(where: { $0.trip_id == tripId })?
-                                   .direction_id ?? -1
-                //print("🚍 veh \(tripId) → rtRoute=\(rtRoute), staticDir=\(staticDir)")
-            }
-
             // compute arrivals as before
             let nextArrivals: [Arrival] = scheduledEntries.compactMap { entry in
                 let tu = updates.first { $0.trip.trip_id == entry.trip_id }
@@ -97,25 +87,20 @@ final class NextBusViewModel: ObservableObject {
             }
             self.arrivals = nextArrivals.sorted { $0.minutesUntil < $1.minutesUntil }
 
-            // --- Filter by both route_id AND direction_id before pinning ---
-            if let veh = vehicles.first(where: { vehicle in
-                // must be the correct route
+            // collect *all* vehicles that match both route_id and static direction
+            let matching = vehicles.filter { vehicle in
                 guard vehicle.trip.route_id == self.route.route_id else { return false }
-                // find its static GTFS record to check direction
                 guard let staticTrip = GTFSStaticDataLoader.shared.trips
                         .first(where: { $0.trip_id == vehicle.trip.trip_id })
                 else { return false }
-                // must match the selected direction (0 or 1)
                 return staticTrip.direction_id == self.direction
-            }) {
-                self.busCoordinate = CLLocationCoordinate2D(
-                    latitude: veh.position.latitude,
-                    longitude: veh.position.longitude
+            }
+
+            self.busCoordinates = matching.map {
+                CLLocationCoordinate2D(
+                    latitude:  $0.position.latitude,
+                    longitude: $0.position.longitude
                 )
-                // print("🚌 pinning \(veh.trip.trip_id)")
-            } else {
-                // print("⚠️ no match for route=\(self.route.route_id) dir=\(self.direction)")
-                self.busCoordinate = nil
             }
         })
         .store(in: &cancellables)
