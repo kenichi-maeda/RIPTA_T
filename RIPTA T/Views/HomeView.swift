@@ -43,8 +43,7 @@ struct HomeView: View {
 
                     // Map view placeholder
                     NavigationLink {
-                        Text("Map view coming soon")
-                            .navigationTitle("Map")
+                        MapView()
                     } label: {
                         ServiceTile(icon: "map.fill", title: "Map")
                     }
