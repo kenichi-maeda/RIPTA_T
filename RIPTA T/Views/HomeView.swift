@@ -57,9 +57,7 @@ struct HomeView: View {
 
                     // Settings placeholder
                     NavigationLink {
-                        Text("Settings coming soon")
-                            .navigationTitle("Settings")
-                    } label: {
+                        SettingsView()                    } label: {
                         ServiceTile(icon: "gearshape.fill", title: "Settings")
                     }
                 }
