@@ -147,7 +147,7 @@ struct NextBusView: View {
                             HStack {
                                 Text("\(arrival.minutesUntil) min")
                                     .bold()
-                                    .frame(width: 60,
+                                    .frame(width: 80,
                                            alignment: .leading)
                                 Text(arrival.headsign)
                                     .frame(maxWidth: .infinity,
