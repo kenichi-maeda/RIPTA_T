@@ -70,11 +70,14 @@ struct NextBusView: View {
     }
 
     var body: some View {
+        // Build the FavoriteItem for this context
         let me = FavoriteItem(
             routeID:   route.route_id,
             stopID:    stop.stop_id,
             direction: direction
         )
+
+        // Only arrivals > 0 minutes
         let upcoming = vm.arrivals.filter { $0.minutesUntil > 0 }
 
         VStack(spacing: 16) {
@@ -83,7 +86,7 @@ struct NextBusView: View {
                 .font(.largeTitle)
                 .bold()
 
-            // 2) Banner
+            // 2) Route + direction banner
             HStack {
                 Text("Route \(route.route_short_name)").bold()
                 Text("·")
@@ -96,13 +99,12 @@ struct NextBusView: View {
 
             // 3) Map: route polyline + stop pin + all live buses
             Map(position: $cameraPosition) {
-                // draw the route
+                // Route line
                 if let poly = routePolyline {
                     MapPolyline(poly)
                         .stroke(Color.gray, lineWidth: 4)
                 }
-
-                // selected stop
+                // Selected stop
                 Marker("", coordinate:
                     CLLocationCoordinate2D(
                         latitude:  stop.stop_lat,
@@ -111,18 +113,16 @@ struct NextBusView: View {
                 )
                 .tint(.blue)
 
-                // all matching real-time buses
-                ForEach(vm.busCoordinates.indices, id: \.self) { idx in
-                    let coord = vm.busCoordinates[idx]
-                    Marker("", coordinate: coord)
+                // All live buses (with their route short‐name)
+                ForEach(vm.busPositions) { bus in
+                    Marker(bus.routeShortName, coordinate: bus.coordinate)
                         .tint(.red)
                 }
-
             }
             .frame(height: 200)
             .cornerRadius(12)
 
-            // 4) Arrivals / Empty-state
+            // 4) Arrivals / Empty‐state
             if upcoming.isEmpty {
                 HStack {
                     Image(systemName: "bus")
@@ -138,6 +138,7 @@ struct NextBusView: View {
                 .shadow(color: .black.opacity(0.05),
                         radius: 2, x: 0, y: 1)
                 .padding(.horizontal)
+
                 Spacer()
             } else {
                 ScrollView {
@@ -181,6 +182,38 @@ struct NextBusView: View {
                     )
                 }
             }
+        }
+    }
+}
+
+struct NextBusView_Previews: PreviewProvider {
+    static var previews: some View {
+        let dummyRoute = Route(
+            route_id:          "20",
+            route_short_name:  "20",
+            route_long_name:   "Elmwood Ave/Airport",
+            route_type:        3,
+            route_url:         nil,
+            route_color:       nil,
+            route_text_color:  nil
+        )
+        let dummyStop = Stop(
+            stop_id:               "24725",
+            stop_code:             "24725",
+            stop_name:             "Elmwood after Post",
+            stop_desc:             nil,
+            stop_lat:              41.8345,
+            stop_lon:              -71.4155,
+            zone_id:               nil,
+            stop_url:              nil,
+            location_type:         0,
+            parent_station:        nil,
+            stop_associated_place: nil,
+            wheelchair_boarding:   nil
+        )
+        NavigationStack {
+            NextBusView(route: dummyRoute, stop: dummyStop, direction: 0)
+                .environmentObject(FavoritesManager())
         }
     }
 }

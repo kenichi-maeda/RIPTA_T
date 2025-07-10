@@ -103,14 +103,18 @@ struct MapView: View {
                         .stroke(rs.color, lineWidth: 3)
                 }
 
-                // 2) draw every live bus as a red marker
+                // 2) draw every live bus as a red marker with its route number
                 ForEach(vm.vehiclePositions) { record in
                     let coord = CLLocationCoordinate2D(
                         latitude:  record.position.latitude,
                         longitude: record.position.longitude
                     )
-                    Marker("", coordinate: coord)
-                        .tint(.red)
+                    // show route_short_name (or route_id) as the marker’s label
+                    Marker(
+                        record.trip.route_id ?? "?",
+                        coordinate: coord
+                    )
+                    .tint(.red)
                 }
             }
             .ignoresSafeArea()
@@ -155,7 +159,7 @@ extension Color {
             let int = Int(hex, radix: 16)
         else { return nil }
         let r = Double((int >> 16) & 0xFF) / 255
-        let g = Double((int >> 8)  & 0xFF) / 255
+        let g = Double((int >>  8) & 0xFF) / 255
         let b = Double(int         & 0xFF) / 255
         self.init(red: r, green: g, blue: b)
     }
