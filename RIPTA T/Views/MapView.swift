@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 import Combine
+import CoreLocation
 
 // MARK: –– Make VehicleRecord Identifiable
 
@@ -17,9 +18,9 @@ extension VehicleRecord: Identifiable {
 
 // MARK: –– ViewModel
 
-/// ViewModel that loads all GTFS shapes once, then polls for live vehicle positions.
-final class MapViewModel: ObservableObject {
-    /// Shape polylines for every route
+/// Loads all GTFS shapes once, polls live vehicle positions,
+/// and keeps track of the user’s location.
+final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     struct RouteShape: Identifiable {
         let id: String
         let color: Color
@@ -28,28 +29,47 @@ final class MapViewModel: ObservableObject {
 
     @Published var routeShapes: [RouteShape] = []
     @Published var vehiclePositions: [VehicleRecord] = []
+    @Published var userLocation: CLLocationCoordinate2D?
 
-    private var timer: AnyCancellable?
+    private let locationManager = CLLocationManager()
     private var cancellables = Set<AnyCancellable>()
+    private var timer: AnyCancellable?
 
-    init() {
+    override init() {
+        super.init()
+        // 1) Location setup
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+
+        // 2) Load static GTFS shapes
         loadStaticShapes()
+
+        // 3) Fetch vehicles now + every 15s
         fetchVehicles()
-        // Refresh every 15s
         timer = Timer.publish(every: 15, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in self?.fetchVehicles() }
     }
 
+    // CLLocationManagerDelegate
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locs: [CLLocation]) {
+        userLocation = locs.last?.coordinate
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("🔴 Location error:", error)
+    }
+
     private func loadStaticShapes() {
         let trips  = GTFSStaticDataLoader.shared.trips
         let shapes = GTFSStaticDataLoader.shared.shapePoints
-
         var out: [RouteShape] = []
-        for route in GTFSStaticDataLoader.shared.routes {
-            guard let sid = trips.first(where: { $0.route_id == route.route_id })?.shape_id
-            else { continue }
 
+        for route in GTFSStaticDataLoader.shared.routes {
+            guard let sid = trips.first(where: { $0.route_id == route.route_id })?.shape_id else {
+                continue
+            }
             let pts = shapes
                 .filter { $0.shape_id == sid }
                 .sorted { $0.shape_pt_sequence < $1.shape_pt_sequence }
@@ -82,61 +102,75 @@ final class MapViewModel: ObservableObject {
 
 // MARK: –– MapView
 
-/// A full-screen map showing *all* routes + live buses.
 struct MapView: View {
     @StateObject private var vm = MapViewModel()
 
-    /// Starts zoomed out over RI
-    @State private var cameraPosition: MapCameraPosition = .region(
-        MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 41.7, longitude: -71.5),
-            span: MKCoordinateSpan(latitudeDelta: 0.8, longitudeDelta: 0.8)
-        )
+    /// Default zoomed-out region over RI
+    private let defaultRegion = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 41.7, longitude: -71.5),
+        span: MKCoordinateSpan(latitudeDelta: 0.8, longitudeDelta: 0.8)
     )
+
+    @State private var cameraPosition: MapCameraPosition
+
+    init() {
+        // start at the default region
+        _cameraPosition = State(wrappedValue: .region(defaultRegion))
+    }
 
     var body: some View {
         ZStack {
+            // — The map itself —
             Map(position: $cameraPosition) {
-                // 1) draw each route
+                // 1) Route polylines
                 ForEach(vm.routeShapes) { rs in
                     MapPolyline(rs.polyline)
                         .stroke(rs.color, lineWidth: 3)
                 }
 
-                // 2) draw every live bus as a red marker with its route number
+                // 2) Live buses
                 ForEach(vm.vehiclePositions) { record in
                     let coord = CLLocationCoordinate2D(
                         latitude:  record.position.latitude,
                         longitude: record.position.longitude
                     )
-                    // show route_short_name (or route_id) as the marker’s label
-                    Marker(
-                        record.trip.route_id ?? "?",
-                        coordinate: coord
-                    )
-                    .tint(.red)
+                    Marker(record.trip.route_id ?? "?",
+                           coordinate: coord)
+                        .tint(.red)
+                }
+
+                // 3) User location
+                if let userLoc = vm.userLocation {
+                    Marker("", coordinate: userLoc)
+                        .tint(.blue)
                 }
             }
             .ignoresSafeArea()
 
-            // 3) recenter button
+            // — “Locate Me” button —
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
                     Button {
-                        cameraPosition = .region(
-                            MKCoordinateRegion(
-                                center: CLLocationCoordinate2D(latitude: 41.7,
-                                                               longitude: -71.5),
-                                span: MKCoordinateSpan(latitudeDelta: 0.8,
-                                                       longitudeDelta: 0.8)
+                        if let userLoc = vm.userLocation {
+                            cameraPosition = .region(
+                                MKCoordinateRegion(
+                                    center: userLoc,
+                                    span: MKCoordinateSpan(
+                                        latitudeDelta: 0.02,
+                                        longitudeDelta: 0.02
+                                    )
+                                )
                             )
-                        )
+                        } else {
+                            cameraPosition = .region(defaultRegion)
+                        }
                     } label: {
                         Image(systemName: "location.fill")
-                            .padding(8)
-                            .background(Color.white.opacity(0.8))
+                            .font(.title2)
+                            .padding(10)
+                            .background(.white.opacity(0.8))
                             .clipShape(Circle())
                     }
                     .padding()
@@ -148,10 +182,10 @@ struct MapView: View {
     }
 }
 
-// MARK: –– Color-from-hex Helper
+// MARK: –– Hex→Color Helper
 
 extension Color {
-    /// Create Color from 6-digit hex string (e.g. "FF00AA"), else nil
+    /// Create a Color from a 6-digit hex string (e.g. "FF00AA").
     init?(hex: String?) {
         guard
             let hex = hex?.trimmingCharacters(in: .whitespacesAndNewlines),
