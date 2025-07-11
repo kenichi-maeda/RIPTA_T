@@ -23,8 +23,7 @@ struct NextBusView: View {
     /// Prebuilt MKPolyline for the route
     private var routePolyline: MKPolyline? {
         guard !shapeCoords.isEmpty else { return nil }
-        return MKPolyline(coordinates: shapeCoords,
-                          count: shapeCoords.count)
+        return MKPolyline(coordinates: shapeCoords, count: shapeCoords.count)
     }
 
     init(route: Route, stop: Stop, direction: Int) {
@@ -138,17 +137,20 @@ struct NextBusView: View {
                 .shadow(color: .black.opacity(0.05),
                         radius: 2, x: 0, y: 1)
                 .padding(.horizontal)
-
                 Spacer()
             } else {
                 ScrollView {
                     LazyVStack(spacing: 12) {
                         ForEach(upcoming.prefix(5)) { arrival in
-                            HStack {
+                            HStack(spacing: 16) {
                                 Text("\(arrival.minutesUntil) min")
-                                    .bold()
-                                    .frame(width: 80,
-                                           alignment: .leading)
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .padding(.vertical, 6)
+                                    .padding(.horizontal, 12)
+                                    .background(badgeColor(for: arrival.minutesUntil))
+                                    .clipShape(Capsule())
+
                                 Text(arrival.headsign)
                                     .frame(maxWidth: .infinity,
                                            alignment: .leading)
@@ -184,36 +186,15 @@ struct NextBusView: View {
             }
         }
     }
-}
 
-struct NextBusView_Previews: PreviewProvider {
-    static var previews: some View {
-        let dummyRoute = Route(
-            route_id:          "20",
-            route_short_name:  "20",
-            route_long_name:   "Elmwood Ave/Airport",
-            route_type:        3,
-            route_url:         nil,
-            route_color:       nil,
-            route_text_color:  nil
-        )
-        let dummyStop = Stop(
-            stop_id:               "24725",
-            stop_code:             "24725",
-            stop_name:             "Elmwood after Post",
-            stop_desc:             nil,
-            stop_lat:              41.8345,
-            stop_lon:              -71.4155,
-            zone_id:               nil,
-            stop_url:              nil,
-            location_type:         0,
-            parent_station:        nil,
-            stop_associated_place: nil,
-            wheelchair_boarding:   nil
-        )
-        NavigationStack {
-            NextBusView(route: dummyRoute, stop: dummyStop, direction: 0)
-                .environmentObject(FavoritesManager())
+    private func badgeColor(for minutes: Int) -> Color {
+        switch minutes {
+        case ...1:
+            return .red
+        case 2...4:
+            return .orange
+        default:
+            return .green
         }
     }
 }
