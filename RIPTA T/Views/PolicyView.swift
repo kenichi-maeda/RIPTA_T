@@ -35,7 +35,8 @@ struct PolicyView: View {
             VStack(spacing: 24) {
                 Card(title: "Privacy Policy", icon: "hand.raised.fill") {
                     Text("""
-This app does **not** collect or share any personal data. All real-time information is fetched anonymously from RIPTA’s public API and is not stored on this device or sent elsewhere.
+This app only accesses your location if you grant permission, and it’s used solely to show your position on the map. Your location is never stored, tracked, or shared with anyone. All other real‑time data comes anonymously from RIPTA’s public API.
+
 """)
                 }
                 
@@ -43,7 +44,7 @@ This app does **not** collect or share any personal data. All real-time informat
                     Text("""
 By using **RIPTA T**, you agree to use it for personal, non-commercial purposes only. All transit data is owned by RIPTA—please refer to their official terms if you wish to redistribute it.  
 
-**Disclaimer:** This app is provided “as-is,” without warranty of any kind. We accept no responsibility for inaccurate arrival times or any consequences resulting from its use.
+**Disclaimer:** RIPTA T is not affiliated with, endorsed by, or sponsored by RIPTA. This app is provided “as-is,” without warranty of any kind. We accept no responsibility for inaccurate arrival times or any consequences resulting from its use.
 """)
                 }
                 
