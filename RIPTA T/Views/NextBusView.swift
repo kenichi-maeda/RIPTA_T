@@ -142,7 +142,6 @@ private struct RouteDirectionBar: View {
         }
     }
 
-
     private var routeColor: Color {
         Color(hex: route.route_color ?? "888888")
     }
@@ -206,7 +205,7 @@ private struct ArrivalsSection: View {
     let arrivals: [Arrival]
 
     var body: some View {
-        // Gray box “container”
+        // Adaptive gray box container
         VStack {
             ScrollView {
                 LazyVStack(spacing: 12) {
@@ -219,7 +218,7 @@ private struct ArrivalsSection: View {
                 .padding(.horizontal, 4)
             }
         }
-        .background(Color.gray.opacity(0.1))
+        .background(Color(.secondarySystemBackground)) // adaptive
         .cornerRadius(12)
         .padding(.horizontal, ARRIVAL_BOX_SIDE_INSET)
     }
@@ -236,18 +235,18 @@ private struct ArrivalRow: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text(arrival.headsign)
                     .font(.subheadline)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(.primary)   // adaptive text
                     .lineLimit(2)
 
                 Text("≈ \(etaClockString(for: arrival.minutesUntil))")
                     .font(.caption2)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(.secondary) // adaptive text
             }
 
             Spacer(minLength: 0)
         }
         .padding(12)
-        .background(Color.white)
+        .background(Color(.systemBackground))           // adaptive card
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
     }
@@ -304,7 +303,7 @@ private struct EmptyArrivalsCard: View {
         }
         .padding()
         .frame(maxWidth: .infinity, minHeight: 80)
-        .background(Color.white)
+        .background(Color(.systemBackground))           // adaptive
         .cornerRadius(12)
         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
         .padding(.horizontal)

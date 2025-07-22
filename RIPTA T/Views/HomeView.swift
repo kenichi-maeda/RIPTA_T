@@ -74,22 +74,32 @@ struct HomeView: View {
 struct ServiceTile: View {
     let icon: String
     let title: String
+    @Environment(\.colorScheme) private var scheme
 
     var body: some View {
         VStack(spacing: 12) {
             Image(systemName: icon)
                 .font(.system(size: 40))
-                .foregroundColor(.blue)
+                .foregroundColor(.accentColor)   // adapts to theme
             Text(title)
                 .font(.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(.primary)        // adapts to theme
         }
         .frame(maxWidth: .infinity, minHeight: 120)
-        .background(Color.white)
-        .cornerRadius(12)
-        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
+        .background(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color(.secondarySystemBackground))      // adaptive bg
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(Color.primary.opacity(0.06))
+        )
+        .shadow(color: (scheme == .light ? .black.opacity(0.08)
+                                         : .black.opacity(0.4)),
+                radius: 5, x: 0, y: 2)
     }
 }
+
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
